@@ -1,0 +1,48 @@
+# -- Repository URL for this GitOps repo (update to match your fork)
+repoURL: https://github.com/jodybro/argocd-autopilot.git
+
+# -- Target branch ArgoCD watches for changes
+targetRevision: main
+
+# -- ArgoCD Helm chart configuration
+argo-cd:
+  ## Server
+  server:
+    service:
+      type: ClusterIP
+
+  ## Controller
+  controller:
+    resources:
+      requests:
+        cpu: 250m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+
+  ## Repo Server
+  repoServer:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+
+  ## Redis
+  redis:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+
+  ## Configs
+  configs:
+    params:
+      # Allow insecure access for local dev; disable in production
+      server.insecure: true

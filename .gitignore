@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Helm
+charts/*/charts/
+bootstrap/charts/
+*.tgz
+Chart.lock
+
+# Secrets - never commit plaintext secrets
+*secret*.yaml
+!*secret*example*.yaml
+.env

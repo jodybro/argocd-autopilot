@@ -1,0 +1,11 @@
+apiVersion: v2
+name: argocd-autopilot-bootstrap
+description: ArgoCD bootstrap umbrella chart - installs ArgoCD and configures the app-of-apps pattern
+type: application
+version: 0.1.0
+appVersion: "2.13.2"
+
+dependencies:
+  - name: argo-cd
+    version: 7.7.10
+    repository: https://argoproj.github.io/argo-helm
