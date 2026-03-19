@@ -13,6 +13,8 @@ spec:
   sourceRepos:
     - {{ .Values.repoURL | quote }}
   destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
     - namespace: prod
       server: https://kubernetes.default.svc
     - namespace: "prod-*"
