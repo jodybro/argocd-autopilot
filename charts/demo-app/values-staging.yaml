@@ -1,0 +1,18 @@
+# Staging environment overrides
+
+replicaCount: 2
+
+image:
+  tag: "1.27-alpine"
+
+ingress:
+  enabled: true
+  host: demo.staging.example.com
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
