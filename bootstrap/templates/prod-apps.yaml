@@ -9,7 +9,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: prod
   source:
     repoURL: {{ .Values.repoURL }}
     targetRevision: {{ .Values.targetRevision }}
@@ -17,7 +17,3 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: false
