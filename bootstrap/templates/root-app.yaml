@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: "https://github.com/jodybro/argocd-autopilot.git"
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: main
     path: bootstrap/templates
     directory:
       recurse: false
