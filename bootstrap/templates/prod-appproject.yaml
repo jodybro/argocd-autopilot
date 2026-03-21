@@ -6,8 +6,6 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
     environment: prod
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   description: Production environment project
   sourceRepos:

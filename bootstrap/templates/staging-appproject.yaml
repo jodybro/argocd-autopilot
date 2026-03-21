@@ -6,8 +6,6 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: argocd-autopilot
     environment: staging
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   description: Staging environment project
   sourceRepos:
