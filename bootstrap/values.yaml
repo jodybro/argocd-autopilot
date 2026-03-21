@@ -6,6 +6,12 @@ targetRevision: main
 
 # -- ArgoCD Helm chart configuration
 argo-cd:
+  ## CRDs are pre-installed by scripts/install.sh before Helm runs.
+  ## This avoids annotation size limits on large CRD manifests.
+  crds:
+    install: false
+    keep: true
+
   ## Server
   server:
     service:

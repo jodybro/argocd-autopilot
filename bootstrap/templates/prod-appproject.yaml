@@ -27,5 +27,7 @@ spec:
       kind: "*"
     - group: networking.k8s.io
       kind: "*"
+    - group: argoproj.io
+      kind: Application
   orphanedResources:
     warn: true

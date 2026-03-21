@@ -17,6 +17,31 @@ App Source Repo (CI)          This GitOps Repo (CD)           Kubernetes Cluster
 - **CI** (in the app's source repo): Builds and pushes container images
 - **CD** (in this repo): Updates image tags in values files; ArgoCD handles the rest
 
+## Bootstrap Installation
+
+Use `scripts/install.sh` to deploy ArgoCD into a cluster. The script pre-installs
+the ArgoCD CRDs from the official GitHub release (using server-side apply to avoid
+annotation size limits), then runs `helm upgrade --install` with the bootstrap chart.
+
+```bash
+# Basic install
+./scripts/install.sh
+
+# With additional Helm values overrides
+./scripts/install.sh --values my-overrides.yaml
+
+# Multiple values files
+./scripts/install.sh --values overrides-a.yaml --values overrides-b.yaml
+```
+
+The script is idempotent and safe to re-run. It will:
+1. Create the `argocd` namespace if it does not exist.
+2. Apply CRDs for `applications.argoproj.io`, `applicationsets.argoproj.io`, and `appprojects.argoproj.io` via `kubectl apply --server-side --force-conflicts`.
+3. Run `helm dependency update` on the bootstrap chart.
+4. Run `helm upgrade --install` to deploy or update the release.
+
+The ArgoCD version is defined as a variable at the top of the script. Update it there when upgrading ArgoCD.
+
 ## Workflow 1: Image Tag Update
 
 Triggered by the app's CI pipeline after a new image is pushed. Updates the image tag in the target environment's values file.
