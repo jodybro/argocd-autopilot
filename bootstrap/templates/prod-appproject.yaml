@@ -11,7 +11,7 @@ metadata:
 spec:
   description: Production environment project
   sourceRepos:
-    - {{ .Values.repoURL | quote }}
+    - "https://github.com/jodybro/argocd-autopilot.git"
   destinations:
     - namespace: argocd
       server: https://kubernetes.default.svc
