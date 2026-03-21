@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: {{ .Values.repoURL }}
+    repoURL: "https://github.com/jodybro/argocd-autopilot.git"
     targetRevision: {{ .Values.targetRevision }}
     path: bootstrap/templates
     directory:
