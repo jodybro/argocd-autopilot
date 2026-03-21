@@ -12,7 +12,7 @@ spec:
   project: staging
   source:
     repoURL: "https://github.com/jodybro/argocd-autopilot.git"
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: main
     path: apps/staging
   destination:
     server: https://kubernetes.default.svc
