@@ -52,23 +52,3 @@ argo-cd:
     params:
       # Allow insecure access for local dev; disable in production
       server.insecure: true
-    cm:
-      # Custom health check: treat Ingress as Healthy even without LB status
-      resource.customizations.health.networking.k8s.io_Ingress: |
-        hs = {}
-        hs.status = "Healthy"
-        hs.message = ""
-        if obj.status ~= nil then
-          if obj.status.loadBalancer ~= nil then
-            if obj.status.loadBalancer.ingress ~= nil then
-              for i, ingress in ipairs(obj.status.loadBalancer.ingress) do
-                if ingress.hostname ~= nil and ingress.hostname ~= "" then
-                  hs.message = ingress.hostname
-                elseif ingress.ip ~= nil and ingress.ip ~= "" then
-                  hs.message = ingress.ip
-                end
-              end
-            end
-          end
-        end
-        return hs

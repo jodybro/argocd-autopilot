@@ -6,8 +6,7 @@ image:
   tag: latest
 
 ingress:
-  enabled: true
-  host: demo.dev.example.com
+  enabled: false
 
 resources:
   requests:

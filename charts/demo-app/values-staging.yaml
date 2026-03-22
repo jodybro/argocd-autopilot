@@ -6,8 +6,7 @@ image:
   tag: "1.27-alpine"
 
 ingress:
-  enabled: true
-  host: demo.staging.example.com
+  enabled: false
 
 resources:
   requests:
