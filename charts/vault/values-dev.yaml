@@ -24,4 +24,4 @@ vault:
         memory: 512Mi
 
   injector:
-    enabled: false
+    enabled: true
