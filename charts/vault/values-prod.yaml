@@ -1,0 +1,38 @@
+# Production environment overrides
+
+vault:
+  server:
+    standalone:
+      enabled: false
+
+    ha:
+      enabled: true
+      replicas: 3
+      raft:
+        enabled: true
+
+    dataStorage:
+      enabled: true
+      size: 20Gi
+
+    auditStorage:
+      enabled: true
+      size: 10Gi
+
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 1Gi
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+
+  injector:
+    enabled: true
+    resources:
+      requests:
+        cpu: 250m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi

@@ -1,0 +1,40 @@
+# Default values for vault umbrella chart
+# All keys under "vault:" are passed to the upstream HashiCorp Vault chart
+
+vault:
+  global:
+    enabled: true
+
+  server:
+    dev:
+      enabled: false
+
+    standalone:
+      enabled: true
+
+    ha:
+      enabled: false
+
+    dataStorage:
+      enabled: true
+      size: 10Gi
+
+    auditStorage:
+      enabled: false
+
+    resources:
+      requests:
+        cpu: 500m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+
+    ingress:
+      enabled: false
+
+  ui:
+    enabled: true
+
+  injector:
+    enabled: true
