@@ -10,6 +10,7 @@ spec:
   description: Production environment project
   sourceRepos:
     - "https://github.com/jodybro/argocd-autopilot.git"
+    - "https://helm.releases.hashicorp.com"
   destinations:
     - namespace: argocd
       server: https://kubernetes.default.svc
@@ -20,6 +21,12 @@ spec:
   clusterResourceWhitelist:
     - group: ""
       kind: Namespace
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: admissionregistration.k8s.io
+      kind: MutatingWebhookConfiguration
   namespaceResourceWhitelist:
     - group: ""
       kind: "*"

@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vault-staging
+  namespace: argocd
+  labels:
+    app.kubernetes.io/managed-by: argocd-autopilot
+    environment: staging
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: staging
+  source:
+    repoURL: https://github.com/jodybro/argocd-autopilot.git
+    targetRevision: main
+    path: charts/vault
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-staging.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
